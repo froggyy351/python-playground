@@ -23,3 +23,28 @@ def min_max(numbers):
 
 low, high = min_max([3, 1, 4, 1, 5])   # 複数変数に一気に代入(アンパック)
 print(low, high)   # 1 5
+
+target = "サボテン"
+
+if target in plants:
+    print(f"{target}はリストにあります。価格は{plants[target]}円です")
+else:
+    print(f"{target}はリストにありません。")
+
+
+for key, value in plants.items():
+    print(f"{key}: {value}円")
+
+total = 0
+i = 0
+while i < len(price):
+    total += price[i]
+    i += 1
+print(total)
+
+
+total = 0
+i = 0
+for i in range(len(price)):
+    total += price[i]
+print(total)
