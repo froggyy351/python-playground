@@ -5,9 +5,16 @@ name = "こういち"
 print(x)
 print(name)
 
-print(x, name)
+print(str(x) + name)
+print(f"{name}さんの好きな数字は{x}")
+print(x, name, sep="-")
 
 plants = {"エバーフレッシュ": 20000, "アスパラガスナナス": 300, "ポトス": 500}
 price = list(plants.values())
 print(price)
+print(plants["ポトス"])
+plants["モンステラ"] = 8000
+print(plants)
+print(sum(price))
+
 
