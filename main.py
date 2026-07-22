@@ -48,3 +48,24 @@ i = 0
 for i in range(len(price)):
     total += price[i]
 print(total)
+
+# plants 辞書を使って、forループとif文だけ(関数はまだ使わない)で以下の2つを求めてください。
+
+# 1.一番高い植物の名前と金額を見つけて表示する
+# 2.1000円未満の植物が何個あるか(件数)を数えて表示する
+
+# 1
+max_price = 0
+max_name = ""
+for key, value in plants.items():
+    if value > max_price:
+        max_price = value
+        max_name = key
+print(max_name, max_price)
+
+# 2
+counter = 0
+for value in plants.values():
+    if value < 1000:
+        counter += 1
+print(counter)
