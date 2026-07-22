@@ -69,3 +69,13 @@ for value in plants.values():
     if value < 1000:
         counter += 1
 print(counter)
+
+def count_under(plants, threshold = 1000):
+    counter = 0
+    for value in plants.values():
+        if value < threshold:
+            counter += 1
+    return counter
+
+print(count_under(plants))
+print(count_under(plants, 10000))
