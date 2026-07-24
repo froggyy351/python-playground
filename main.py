@@ -70,6 +70,7 @@ for value in plants.values():
         counter += 1
 print(counter)
 
+# threshold = しきい値
 def count_under(plants, threshold = 1000):
     counter = 0
     for value in plants.values():
@@ -79,3 +80,24 @@ def count_under(plants, threshold = 1000):
 
 print(count_under(plants))
 print(count_under(plants, 10000))
+
+# クラス
+# pythonはjavaみたいにsetter, getterいらない
+class Plant:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+        
+    def is_expensive(self, threshold = 1000): # この1000はデフォルト値で、関数呼び出すときに引数で上書きできる
+        return self.price >= threshold
+    
+pot = Plant("ポトス", 500)
+print(pot.name, pot.price)
+print(pot.is_expensive())
+print(pot.is_expensive(300))
+
+p1 = Plant("ポトス", 500)
+p2 = Plant("ポトス", 500)
+print(id(p1), id(p2))
+# 「id()が同じかどうか」で判定
+print(p1 == p2)
