@@ -101,3 +101,21 @@ p2 = Plant("ポトス", 500)
 print(id(p1), id(p2))
 # 「id()が同じかどうか」で判定
 print(p1 == p2)
+
+target = "サボテン"
+try:
+    print(plants[target])
+except KeyError:
+    print(f"{target} は plants に存在しません")
+
+def divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return "0では割れません"
+    except TypeError:
+        return "数値以外では割れません"
+
+print(divide(10, 2))
+print(divide(10, 0))
+print(divide(10, "a"))
