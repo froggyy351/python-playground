@@ -158,5 +158,5 @@ def show_prices(*plant_names):
         else:
             print(f"{name}は見つかりません")
 
-show_prices("モンステラ");
-show_prices("モンステラ","ガジュマル");
+show_prices("モンステラ")
+show_prices("モンステラ","ガジュマル")
