@@ -145,3 +145,18 @@ friend_plants = {"サボテン", "ガジュマル", "ポトス"}
 print(my_plants & friend_plants) #積集合
 print(my_plants | friend_plants) #和集合
 print(my_plants - friend_plants) #差集合
+
+# set = 集合（重複不可）
+# list = 可変配列（重複可）
+# dict = map（キー＋値）
+
+# 可変長引数
+def show_prices(*plant_names):
+    for name in plant_names:
+        if name in plants:
+            print(f"{name}: {plants[name]}円")
+        else:
+            print(f"{name}は見つかりません")
+
+show_prices("モンステラ");
+show_prices("モンステラ","ガジュマル");
