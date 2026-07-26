@@ -1,3 +1,4 @@
+from plant import Plant
 
 x = 10
 name = "こういち"
@@ -81,15 +82,6 @@ def count_under(plants, threshold = 1000):
 print(count_under(plants))
 print(count_under(plants, 10000))
 
-# クラス
-# pythonはjavaみたいにsetter, getterいらない
-class Plant:
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
-        
-    def is_expensive(self, threshold = 1000): # この1000はデフォルト値で、関数呼び出すときに引数で上書きできる
-        return self.price >= threshold
     
 pot = Plant("ポトス", 500)
 print(pot.name, pot.price)
@@ -119,3 +111,15 @@ def divide(a, b):
 print(divide(10, 2))
 print(divide(10, 0))
 print(divide(10, "a"))
+
+# スライス
+name = "こういち"
+print(name[0:2])
+print(name[:2])
+print(name[2:])
+print(name[2])
+print(name[-1])
+print(name[-0])
+print(name[::2])
+print(name[::1])
+print(name[::-1])
