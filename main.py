@@ -123,3 +123,25 @@ print(name[-0])
 print(name[::2])
 print(name[::1])
 print(name[::-1])
+
+# 内包表記（list comprehension）
+# 1. 全部の値段を1.1倍(消費税込み)にした新しいリストを作る
+prices_with_tax = [value * 1.1 for value in plants.values()]
+print(prices_with_tax)
+
+# 2. 1000円以上の植物の「名前」だけを集めたリストを作る(前にforループで書いたやつの内包表記版)
+expensive_names = [name for name, price in plants.items() if price >= 1000]
+print(expensive_names)
+
+# 3. 名前の文字数が3文字以上の植物名だけを集める
+long_names = [name for name in plants.keys() if len(name) >= 3]
+print(long_names)
+
+# set(集合)
+# 最大の特徴: 重複を持てない
+my_plants = {"ポトス", "アスパラガスナナス", "モンステラ"}
+friend_plants = {"サボテン", "ガジュマル", "ポトス"}
+
+print(my_plants & friend_plants) #積集合
+print(my_plants | friend_plants) #和集合
+print(my_plants - friend_plants) #差集合
