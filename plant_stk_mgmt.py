@@ -1,6 +1,6 @@
 
-plants = {}
-cont_flg = 1
+plants = {"エバーフレッシュ": 20000, "アスパラガスナナス": 300, "ポトス": 500, "モンステラ": 8000}
+cont_flg = True
 
 def add_plant(name, price):
     plants[name] = price
@@ -17,15 +17,15 @@ def search_plant(name):
 def show_plants():
     for name,price in plants.items():
         if price >= 1000:
-            print(f"{name}: {price}")
+            print(f"{name}は、{price}円です")
 
 def sum_all_plants():
     total_price = 0
     for price in plants.values():
         total_price += price
-    print(f"合計：{total_price}円です")
+    print(f"合計は{total_price}円です")
 
-while cont_flg == 1:
+while cont_flg == True:
     print(
     """
     1. 追加
@@ -33,19 +33,30 @@ while cont_flg == 1:
     3. 一覧
     4. 合計金額
     5. 終了
-    /n
     数字を入力してください
     """)
 
-    num = input()
+    while True:
+        try:
+            num = int(input())
+            break
+        except ValueError:
+            print("入力が正しくありません。1~5の半角数字で入力してください")
 
-    match int(num):
+    match num:
         case 1:
             print("植物名と価格を登録します")
-            print("植物名を入力してください")
-            name = input()
+            while True:
+                name = input("植物名を入力してください：").strip()
+                if name:
+                    break
             print("価格を入力してください")
-            price = int(input())
+            while True:
+                try:
+                    price = int(input())
+                    break
+                except:
+                    print("半角数字で入力してください")
             add_plant(name, price)
         case 2:
             print("検索したい植物名を入力してください")
@@ -59,7 +70,7 @@ while cont_flg == 1:
             sum_all_plants()
         case 5:
             print("プログラムを終了します")
-            cont_flg = 0
+            cont_flg = False
         case _:
             print("1~5の半角数字で入力してください")
 
