@@ -60,7 +60,10 @@ while cont_flg == True:
             add_plant(name, price)
         case 2:
             print("検索したい植物名を入力してください")
-            name = input()
+            while True:
+                name = input("植物名を入力してください：").strip()
+                if name:
+                    break
             search_plant(name)
         case 3:
             print("1000円以上の植物をすべて表示します")
