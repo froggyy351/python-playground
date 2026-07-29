@@ -7,6 +7,14 @@ def add_plant(name: str, price: int) -> None:
     print("植物在庫が追加されました")
     print(plants)
 
+def log_call(func):
+    def wrapper(*args, **kwargs):
+        print(f"{func.__name__}が呼ばれました")
+        result = func(*args, **kwargs)
+        return result
+    return wrapper
+
+@log_call
 def search_plant(name: str) -> None:
     if name in plants:
         price = plants[name]
