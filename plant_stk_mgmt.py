@@ -2,12 +2,12 @@
 plants = {"エバーフレッシュ": 20000, "アスパラガスナナス": 300, "ポトス": 500, "モンステラ": 8000}
 cont_flg = True
 
-def add_plant(name, price):
+def add_plant(name: str, price: int) -> None:
     plants[name] = price
     print("植物在庫が追加されました")
     print(plants)
 
-def search_plant(name):
+def search_plant(name: str) -> None:
     if name in plants:
         price = plants[name]
         print(f"{name}の価格は、{price}です")
