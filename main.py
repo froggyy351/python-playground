@@ -1,4 +1,6 @@
 from plant import Plant
+import time
+import asyncio
 
 x = 10
 name = "こういち"
@@ -160,3 +162,37 @@ def show_prices(*plant_names):
 
 show_prices("モンステラ")
 show_prices("モンステラ","ガジュマル")
+
+# sync（同期）
+def make_tea():
+    print("お湯を沸かし始める")
+    time.sleep(3)
+    print("お茶ができた")
+    
+def make_toast():
+    print("トースト開始")
+    time.sleep(2)
+    print("トーストができた")
+
+start = time.time()
+make_tea()
+make_toast()
+print(f"合計: {time.time() - start:.1f}秒") #だいたい5秒(3+2の直列)
+
+# async（非同期）
+async def make_tea():
+    print("お湯を沸かし始める")
+    await asyncio.sleep(3)
+    print("お茶ができた")
+    
+async def make_toast():
+    print("トースト開始")
+    await asyncio.sleep(2)
+    print("トーストができた")
+
+async def main():
+    start = time.time()
+    await asyncio.gather(make_tea(), make_toast()) #2つを同時に開始
+    print(f"合計: {time.time() - start:.1f}秒") #だいたい3秒(長いほうだけで済む)
+
+asyncio.run(main())

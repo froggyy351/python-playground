@@ -7,6 +7,7 @@ def add_plant(name: str, price: int) -> None:
     print("植物在庫が追加されました")
     print(plants)
 
+# [学習メモ]wrapperの形の関数(デコレータ)を1つ書いておけば、それを@で付けるだけで、どんな既存の関数にも同じ処理を後付けできる
 def log_call(func):
     def wrapper(*args, **kwargs):
         print(f"{func.__name__}が呼ばれました")
