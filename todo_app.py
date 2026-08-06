@@ -24,12 +24,15 @@ def get_todo_byId(task_id: int, db: dict = Depends(task_db)):
     return db[task_id]
 
 # GET（複）
-@app.get("/")
+@app.get("/todo")
 def get_todos(db: dict = Depends(task_db)):
     return db
 
 # POST
-
+@app.post("/todo")
+def create_todo(task: Task):
+    # 途中（Pydanticのクラス作って、、する必要あり）
+    
 
 # PUT
 
