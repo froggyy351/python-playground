@@ -1,4 +1,6 @@
 from fastapi import FastAPI, Depends, HTTPException
+from pydantic import BaseModel
+
 # Taskクラス
 class Task:
     next_task_id = 1
@@ -29,10 +31,14 @@ def get_todos(db: dict = Depends(task_db)):
     return db
 
 # POST
+class todoCreate(BaseModel):
+    title :str
+
 @app.post("/todo")
-def create_todo(task: Task):
-    # 途中（Pydanticのクラス作って、、する必要あり）
-    
+def create_todo(task: todoCreate, db: dict = Depends(task_db)):
+    new_task = Task(task.title)
+    db[new_task.task_id] = new_task
+    return new_task
 
 # PUT
 
