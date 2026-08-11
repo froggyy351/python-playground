@@ -42,12 +42,17 @@ def create_todo(task: todoCreate, db: dict = Depends(task_db)):
 
 # PUT
 @app.put("/todo/{task_id}")
-def update_todo(task: todoCreate, task_id: int, db: dict = Depends(task_db)):
+def update_todo(task_id: int, db: dict = Depends(task_db)):
     if task_id not in db:
         raise HTTPException(status_code=404, detail=f"task_id: {task_id}は見つかりません")
-    db[task_id] = task
-    return task
+    existing_task = db[task_id]
+    existing_task.isDone = not existing_task.isDone
+    return existing_task
 
 # DELETE
-
-
+@app.delete("/todo/{task_id}")
+def delete_task(task_id: int, db: dict = Depends(task_db)):
+    if task_id not in db:
+        raise HTTPException(status_code=404, detail=f"task_id: {task_id}は見つかりません")
+    del db[task_id]
+    return {"message": f"task_id: {task_id}のタスクを削除しました", "todo": db}
